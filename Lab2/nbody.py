@@ -25,8 +25,10 @@ Usage:
         def initialize(particles:Particles):
             ....
             ....
-            particles.set_particles_mass(mass)
-            particles.set_particles(pos,vel,acc)
+            particles.set_masses(mass)
+            particles.set_positions(pos)
+            particles.set_velocities(vel)
+            particles.set_accelerations(acc)
 
             return particles
 
@@ -64,85 +66,15 @@ class Particles:
 
         By default: particle properties include:
                 nparticles: int. number of particles
-                _mass: (N,1) mass of each particle
-                _pos:  (N,3) x,y,z positions of each particle
-                _vel:  (N,3) vx, vy, vz velocities of each particle
-                _acc:  (N,3) ax, ay, az accelerations of each partciel
-                _tag:  (N)   tag of each particle
+                _masses: (N,1) mass of each particle
+                _positions:  (N,3) x,y,z positions of each particle
+                _velocities:  (N,3) vx, vy, vz velocities of each particle
+                _accelerations:  (N,3) ax, ay, az accelerations of each partciel
+                _tags:  (N)   tag of each particle
                 _time: float. the simulation time 
 
         """
         # TODO:
-        return
-
-    def set_particles_tag(self, IDs):
-        """
-        IDs is a numpy array that describes the particle tags
-
-        e.g. IDs = np.linspace(1,N,N)
-        """
-        #TODO:
-        return
-
-    def set_particles_mass(self, mass):
-        """
-        mass is a Nx1 numpy matrix
-        """
-        #TODO:
-        return
-
-    def get_particles_mass(self):
-        """
-        mass is a Nx1 numpy matrix
-
-        :return: _mass
-        """
-        return 
-
-    def get_particles_velocity(self):
-        """
-        velocity is a Nx3 numpy matrix
-
-        :return: _vel
-        """
-        return 
-
-    def get_particles_position(self):
-        """
-        position is a Nx3 numpy matrix.
-
-        :return: _pos
-        """
-        return 
-
-    def get_particles_acceleration(self):
-        """
-        acceleration is a Nx3 numpy matrix
-
-        :return: _acc
-        """
-        return
-
-    def get_tags(self):
-        """
-        Tag is a numpy array.
-
-        :return: _tag
-        """
-        return 
-
-    def get_particles(self):
-        """
-        Get the particle informations.
-
-        :rturn [position, velocity, acceleration]: 
-        """
-        return
-        
-    def set_particles(self, pos, vel, acc):
-        """
-        Set the particle properties. assuming that mass cannot be changed during the simulation
-        """
         return
 
     def output(self,fn, time):
@@ -151,11 +83,11 @@ class Particles:
 
 
         """
-        mass = self._mass
-        pos  = self._pos
-        vel  = self._vel
-        acc  = self._acc
-        tag  = self._tag
+        mass = self._masses
+        pos  = self._positions
+        vel  = self._velocities
+        acc  = self._accelerations
+        tag  = self._tags
         header = """
                 ----------------------------------------------------
                 Data from a 3D direct N-body simulation. 
